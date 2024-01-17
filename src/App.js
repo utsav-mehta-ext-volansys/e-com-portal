@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import { React, useEffect, useState } from 'react';
 import './App.css';
+import Category from './components/Category';
 
 function App() {
+
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/categories").then(res => res.json()).then(data => {
+      setCategories(data)
+    })
+  }, [])
+
+  const handleCategoryClick = (id) => {
+    fetch(`http://localhost:3001/products?cat_id=${id}`).then(res => res.json()).then(data => {
+      setProducts(data)
+    })
+  }
+  const renderCategories = () => {
+    return categories.map((category) => {
+      return (
+        <Category onCategoryClick={() => handleCategoryClick(category.id)} key={category.id} id={category.id} title={category.title} />
+      )
+    })
+  }
+  const renderProducts = () => {
+    return products.map((product) => {
+      return (
+        <div key={product.id}>{product.title}</div>
+      )
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <header>My Store</header>
+      <section>
+        <nav>
+          {categories && renderCategories()}
+        </nav>
+        <article>
+          <h1>Products</h1>
+          {products && renderProducts()}
+        </article>
+      </section>
+      <footer>footer</footer>
+    </>
   );
 }
 
