@@ -1,22 +1,23 @@
 import { React, useEffect, useState } from 'react';
 import './App.css';
 import Category from './components/Category';
-
+import { fetcher } from './utils/apiRequest';
 function App() {
 
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/categories").then(res => res.json()).then(data => {
+    const fetchData = async () => {
+      const data = await fetcher('categories')
       setCategories(data)
-    })
+    }
+    fetchData()
   }, [])
 
-  const handleCategoryClick = (id) => {
-    fetch(`http://localhost:3001/products?cat_id=${id}`).then(res => res.json()).then(data => {
-      setProducts(data)
-    })
+  const handleCategoryClick = async (id) => {
+    const data = await fetcher(`products?cat_id=${id}`)
+    setProducts(data)
   }
   const renderCategories = () => {
     return categories.map((category) => {
