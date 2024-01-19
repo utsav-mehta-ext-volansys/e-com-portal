@@ -1,14 +1,43 @@
 {
-    "categories":[
-        {"id":1,"title":"Notebooks"},
-        {"id":2,"title":"Pens"},
-        {"id":3,"title":"Fevicol"}
+    "categories": [
+        {
+            "id": 1,
+            "title": "Notebooks"
+        },
+        {
+            "id": 2,
+            "title": "Pens"
+        },
+        {
+            "id": 3,
+            "title": "Fevicol"
+        }
     ],
-    "products":[
-        {"id":1,"cat_id":1,"title":"Navneet Youva Notebook"},
-        {"id":2,"cat_id":1,"title":"Meeraj Notebook"},
-        {"id":3,"cat_id":2,"title":"Goldex Pen"},
-        {"id":3,"cat_id":2,"title":"Saino Softex Pen"},
-        {"id":3,"cat_id":3,"title":"Fevicol 100ml"}
+    "products": [
+        {
+            "id": 1,
+            "cat_id": 1,
+            "title": "Navneet Youva Notebook"
+        },
+        {
+            "id": 2,
+            "cat_id": 1,
+            "title": "Meeraj Notebook"
+        },
+        {
+            "id": 3,
+            "cat_id": 2,
+            "title": "Goldex Pen"
+        },
+        {
+            "id": 3,
+            "cat_id": 2,
+            "title": "Saino Softex Pen"
+        },
+        {
+            "id": 3,
+            "cat_id": 3,
+            "title": "Fevicol 100ml"
+        }
     ]
 }
