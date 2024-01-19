@@ -3,7 +3,10 @@ import { BASE_URL, GET_CATEGORIES, GET_PRODUCTS } from "./constants";
 export const fetcher = async (url) => {
     let responseObj = { errorMsg: '', data: [] }
     try {
-        const response = await fetch(BASE_URL + url)
+        const response = await fetch(BASE_URL + url);
+        if (!response.ok) {
+            throw new Error(`HTTP Error ${response.status}`)
+        }
         responseObj.errorMsg = '';
         responseObj.data = await response.json();
 
